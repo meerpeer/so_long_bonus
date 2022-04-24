@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/02 13:29:17 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 13:37:30 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/04/24 14:22:17 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,12 @@
 int	main(int argc, char **argv)
 {
 	char		**map;
+	t_layout	*layout;
 
 	map = NULL;
 	map = get_map(argc, argv);
-	ft_printf("map read success\n");
-	int y = 0;
-	while(map[y])
-	{
-		ft_printf("%s\n", map[y]);
-		y++;
-	}
-	//start_game(map);
+	layout = get_layout(map);
+	check_layout_error(map, layout);
+	start_game(map, layout);
 	return (0);
 }

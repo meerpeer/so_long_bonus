@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/10 15:14:12 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 14:08:37 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/04/24 14:20:42 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,8 @@ void	check_input_file_error(int argc, char **argv)
 		map_error("Incorrect file type", NULL);
 }
 
-void	check_layout_error(char **map)
+void	check_layout_error(char **map, t_layout *layout)
 {
-	t_layout	*layout;
-
-	layout = get_layout(map);
 	if (!layout->is_rectangle)
 		map_error("Not a rectangle", map);
 	if (!layout->is_wall)

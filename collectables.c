@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 14:19:39 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/20 14:40:26 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/04/24 16:37:45 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	collect(t_game *game, int x, int y)
 {
 	game->collected += 1;
 	hide_collectable(game, x, y);
-	try_open_exit(game);
 	printf("collected a key\n");
 	return (0);
 }
@@ -56,8 +55,8 @@ int	try_collect(t_game *game)
 	int	x;
 	int	y;
 
-	x = game->playerpos.x;
-	y = game->playerpos.y;
+	x = game->player->position.x;
+	y = game->player->position.y;
 	if (game->map[y][x] == 'C')
 		collect(game, x, y);
 	return (0);

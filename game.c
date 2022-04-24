@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:05:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/20 14:44:22 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/04/24 16:43:14 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 // 	t_collect	collect;
 	
 // }
-
+void	update_gamestate(t_game *game)
+{
+	try_win(game);
+	try_collect(game);
+	try_open_exit(game);
+}
 
 int	start_game(char **map, t_layout *layout)
 {
@@ -28,13 +33,14 @@ int	start_game(char **map, t_layout *layout)
 			(SIZE * layout->n_rows), "the name of the game", true);
 	if (!game->mlx)
 		exit (0);
+	game->player = malloc (sizeof (struct s_player));
 	get_sprites(game);
 	game->map = map;
 	game->test = 1;
 	game->layout = layout;
+	game->collected = 0;
 	game->collectables = NULL;
 	game->door_open = 0;
-	ft_printf("mlx initiliazed\n");
 	mlx_key_hook(game->mlx, &key_hook, game);
 	show_map(game->map, game);
 //	mlx_loop_hook(game->mlx, &tick, &game);

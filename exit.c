@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/20 14:33:26 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/20 14:46:11 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/04/24 16:38:55 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	try_win(t_game *game)
 	int	x;
 	int	y;
 
-	x = game->playerpos.x;
-	y = game->playerpos.y;
+	x = game->player->position.x;
+	y = game->player->position.y;
 	if (game->door_open && game->map[y][x] == 'E')
 		end_game();
 }
