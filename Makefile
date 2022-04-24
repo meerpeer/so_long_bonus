@@ -7,9 +7,10 @@ MLX_LINK = -I include -lglfw -L "/Users/mevan-de/.brew/opt/glfw/lib/"
 
 HEADERFILE = so_long.h MLX42/include/MLX42/MLX42.h\
 
-SRCS = main.c map_reader.c utils.c\
-	error.c game.c player.c show_map.c sprites.c\
-	collectables.c collect_list.c\
+SRCS = main.c \
+	map_reader.c map_reader_utils.c map_reader_layout.c map_error.c\
+	game.c player.c show_map.c sprites.c\
+	collectables.c collect_list.c exit.c\
 
 OBJS = $(SRCS:.c=.o)
 OBJ_DIR = "obj" 

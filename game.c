@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:05:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/10 17:50:11 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/04/20 14:44:22 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	start_game(char **map, t_layout *layout)
 	game->test = 1;
 	game->layout = layout;
 	game->collectables = NULL;
+	game->door_open = 0;
 	ft_printf("mlx initiliazed\n");
 	mlx_key_hook(game->mlx, &key_hook, game);
 	show_map(game->map, game);
@@ -41,7 +42,7 @@ int	start_game(char **map, t_layout *layout)
 	return (0);
 }
 
-int	end_game(void)
+void	end_game(void)
 {
 	exit(0);
 }

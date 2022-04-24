@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/10 17:41:34 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/04/24 14:08:05 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,22 @@
 # define SOUTH 3
 # define WEST 4
 
+typedef enum e_bool
+{
+	FALSE = 0,
+	TRUE = 1
+}			t_bool;
+
 // layout values
 typedef struct s_layout {
-	int	n_players;
-	int	n_exits;
-	int	n_collects;
-	int	n_rows;
-	int	n_collums;
-	int	rect_error;
-	int	wall_error;
-	int	wrong_char_error;
+	int		n_players;
+	int		n_exits;
+	int		n_collects;
+	int		n_rows;
+	int		n_collums;
+	t_bool	is_rectangle;
+	t_bool	is_wall;
+	t_bool	has_wrong_char;
 }				t_layout;
 
 typedef struct s_playerpos {
@@ -91,6 +97,7 @@ typedef struct s_game {
 	t_sprites	*sprites;
 	char		**map;
 	int			collected;
+	int			door_open;
 	t_collect	*collectables;
 	t_layout	*layout;
 	t_playerpos	playerpos;
@@ -101,10 +108,20 @@ typedef struct s_game {
 	int			test;
 }				t_game;
 
-char		**read_map(int argc, char *argv[], char **map, t_layout	*layout);
-int			map_error(char *str, char *map_lines);
-int			check_layout_error(t_layout *layout, char *map_lines);
+// MAP READER FUNCTIONS
+char		**read_file_to_2darray(char *argv[]);
+char		**get_map(int argc, char *argv[]);
+	//	map reader helper functions
 char		*append_str(char *base, char *add);
+int			get_nr_chars(char *str, char c);
+	// map reader layout
+t_layout	*get_layout(char **map);
+	//	map reader errors
+void		check_input_file_error(int argc, char **argv);
+void		map_error(char *str, char **map);
+void		check_layout_error(char **map);
+
+// game
 int			start_game(char **map, t_layout *layout);
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		tick(void *param);
@@ -117,5 +134,8 @@ int			create_collectable(t_game *game, int x, int y);
 int			try_collect(t_game *game);
 void		lstcollect_addback(t_collect **lst, t_collect *new);
 t_collect	*new_lstcollect(mlx_image_t *img, int x, int y);
+void		try_open_exit(t_game *game);
+void		try_win(t_game *game);
+void		end_game(void);
 
 #endif

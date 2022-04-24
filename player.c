@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:13:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/10 18:09:34 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/04/24 13:33:59 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	set_playerlocation(t_game *game)
 {
 	game->playerpos.x = game->img_player->instances[0].x / SIZE;
 	game->playerpos.y = game->img_player->instances[0].y / SIZE;
-	//printf("player pos= %i,%i\n", game->playerpos.y, game->playerpos.x);
 }
 
 int	create_player_image(t_game *game, int x, int y)
@@ -42,6 +41,8 @@ int	move_player(t_game *game, int direction)
 	if (direction == EAST)
 		game->img_player->instances[0].x += SIZE;
 	set_playerlocation(game);
+	try_win(game);
+	try_collect(game);
 	return (0);
 }
 
@@ -87,6 +88,5 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 			exit(0);
 		if (keydata.key == MLX_KEY_Q)
 			mlx_draw_texture(game->img_exit, game->sprites->exit_open, 0, 0);
-		try_collect(game);
 	}
 }

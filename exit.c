@@ -1,15 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utils.c                                            :+:    :+:            */
+/*   exit.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/03/11 13:17:36 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 12:43:31 by mevan-de      ########   odam.nl         */
+/*   Created: 2022/04/20 14:33:26 by mevan-de      #+#    #+#                 */
+/*   Updated: 2022/04/20 14:46:11 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	open_exit(t_game *game)
+{
+	mlx_draw_texture(game->img_exit, game->sprites->exit_open, 0, 0);
+	game->door_open = 1;
+}
 
+void	try_open_exit(t_game *game)
+{
+	if (game->collected == game->layout->n_collects)
+		open_exit(game);
+}
+
+void	try_win(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = game->playerpos.x;
+	y = game->playerpos.y;
+	if (game->door_open && game->map[y][x] == 'E')
+		end_game();
+}
