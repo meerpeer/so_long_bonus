@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:13:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 17:05:06 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 13:14:35 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,10 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 			direction = EAST;
 		else if (keydata.key == MLX_KEY_ESCAPE)
 			exit(0);
-		if (can_player_move(game->player, direction, game->map))
+		if (can_player_move(game->player, direction, game->map) && direction)
 		{
 			move_player(game->player, direction);
 			update_gamestate(game);
-			
 		}
 		if (keydata.key == MLX_KEY_Q)
 			mlx_draw_texture(game->img_exit, game->sprites->exit_open, 0, 0);

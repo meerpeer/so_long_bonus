@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 11:32:21 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 13:16:43 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void		map_error(char *str, char **map);
 void		check_layout_error(char **map, t_layout *layout);
 
 // game
-int			start_game(char **map, t_layout *layout);
+int			start_game(char **map, t_layout *layout, t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		tick(void *param);
 
