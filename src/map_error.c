@@ -6,11 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/10 15:14:12 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 14:20:42 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 15:15:37 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 void	map_error(char *str, char **map)
 {
@@ -32,9 +32,9 @@ void	check_input_file_error(int argc, char **argv)
 
 void	check_layout_error(char **map, t_layout *layout)
 {
-	if (!layout->is_rectangle)
+	if (layout->wrong_shape)
 		map_error("Not a rectangle", map);
-	if (!layout->is_wall)
+	if (layout->wall_incomplete)
 		map_error("Walls not closed", map);
 	if (layout->n_players == 0)
 		map_error("No player detected", map);

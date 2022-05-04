@@ -6,11 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 16:56:53 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/10 17:18:18 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 13:57:51 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 t_collect	*new_lstcollect(mlx_image_t *img, int x, int y)
 {

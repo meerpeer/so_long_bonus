@@ -6,11 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 14:19:39 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 16:37:45 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 16:06:22 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	create_collectable(t_game *game, int x, int y)
 {
@@ -18,7 +18,7 @@ int	create_collectable(t_game *game, int x, int y)
 
 	new_collect_img = mlx_new_image(game->mlx, SIZE, SIZE);
 	mlx_draw_texture(new_collect_img,
-		game->sprites->collect, 0, 0);
+		game->sprites.collect, 0, 0);
 	mlx_image_to_window(game->mlx, new_collect_img,
 		SIZE * x, SIZE * y);
 	lstcollect_addback(&game->collectables,
@@ -55,8 +55,8 @@ int	try_collect(t_game *game)
 	int	x;
 	int	y;
 
-	x = game->player->position.x;
-	y = game->player->position.y;
+	x = game->player.position.x;
+	y = game->player.position.y;
 	if (game->map[y][x] == 'C')
 		collect(game, x, y);
 	return (0);

@@ -5,37 +5,35 @@ MLXFLAGS = -Lmlx -lmlx -Imlx -framework OpenGL -framework AppKit
 CC = gcc
 MLX_LINK = -I include -lglfw -L "/Users/mevan-de/.brew/opt/glfw/lib/"
 
-HEADERFILE = so_long.h MLX42/include/MLX42/MLX42.h\
+HEADERFILES = include/so_long.h MLX42/include/MLX42/MLX42.h\
 
-SRCS = main.c \
+SRC_FILES = main.c \
 	map_reader.c map_reader_utils.c map_reader_layout.c map_error.c\
 	game.c player.c show_map.c sprites.c\
 	moves.c\
-	collectables.c collect_list.c exit.c\
+	collectables.c collect_list.c exit.c \
 
-OBJS = $(SRCS:.c=.o)
-OBJ_DIR = "obj" 
+OBJ_FILES = $(SRC_FILES:.c=.o)
+OBJS = $(addprefix obj/, $(OBJ_FILES))
 
 LIBFT = libft/libft.a
+LIBFT_DIR = libft/
 PRINTF = ft_printf/printf.a
+PRINTF_DIR = ft_printf/
 MLX = MLX42/libmlx42.a 
+MLX_DIR = MLX42/
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(MLX) $(HEADERFILES)
+$(NAME): $(OBJS) $(HEADERFILES)
+	make -C $(LIBFT_DIR)
+	make -C $(PRINTF_DIR)
+	make -C $(MLX_DIR)
 	$(CC) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) $(MLX_LINK) -o $(NAME)
 
-%.o: %.c 
+obj/%.o: src/%.c 
+	@mkdir -p obj
 	$(CC) $(CFLAGS) -c $< -o $@
-
-$(LIBFT): libft/*.c
-	make -C libft
-
-$(PRINTF): ft_printf/*.c
-	make -C ft_printf
-
-$(MLX):
-	make -C MLX42
 
 clean:
 	rm -f $(OBJS)
@@ -45,8 +43,8 @@ play: all
 
 fclean: clean
 	rm -f $(NAME)
-	#make fclean -C libft
-	#make fclean -C ft_printf
+	#make fclean $(LIBFT_DIR)
+	#make fclean $(PRINTF_DIR)
 	#make fclean -C MLX42
 
 

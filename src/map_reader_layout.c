@@ -6,28 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/24 13:44:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 14:09:11 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 15:31:02 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-
-t_layout	*create_empty_layout(void)
-{
-	t_layout	*layout;
-
-	layout = malloc(sizeof (struct s_layout));
-	layout->n_players = 0;
-	layout->n_exits = 0;
-	layout->n_collects = 0;
-	layout->n_rows = 0;
-	layout->n_collums = 0;
-	layout->is_rectangle = TRUE;
-	layout->is_wall = TRUE;
-	layout->has_wrong_char = FALSE;
-	return (layout);
-}
+#include "../include/so_long.h"
 
 void	check_line(char *line, t_layout *layout, t_bool is_outer)
 {
@@ -37,10 +20,10 @@ void	check_line(char *line, t_layout *layout, t_bool is_outer)
 		is_outer = TRUE;
 	}
 	if (ft_strlen(line) != (size_t)layout->n_collums)
-		layout->is_rectangle = FALSE;
+		layout->wrong_shape = TRUE;
 	if (line[0] != '1' || line[layout->n_collums - 1] != '1'
 		|| (is_outer && get_nr_chars(line, '1') != layout->n_collums))
-			layout->is_wall = FALSE;
+			layout->wall_incomplete = TRUE;
 	layout->n_players = layout->n_players + get_nr_chars(line, 'P');
 	layout->n_exits = layout->n_exits + get_nr_chars(line, 'E');
 	layout->n_collects = layout->n_collects + get_nr_chars(line, 'C');
@@ -59,7 +42,9 @@ t_layout	*get_layout(char **map)
 	t_layout	*layout;
 
 	i = 0;
-	layout = create_empty_layout();
+	layout = ft_calloc(1, sizeof (struct s_layout));
+	if (!layout)
+		return (NULL);
 	while (map[i])
 	{
 		check_line(map[i], layout, FALSE);

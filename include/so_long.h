@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 13:16:43 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 16:04:26 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define SO_LONG_H
 
 # include <stdio.h>
-# include "libft/libft.h"
-# include "libft/get_next_line.h"
-# include "ft_printf/ft_printf.h"
-# include "MLX42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
+# include "../libft/get_next_line.h"
+# include "../ft_printf/ft_printf.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
 // Size of tiles
 # define SIZE 16
@@ -52,8 +52,8 @@ typedef struct s_layout {
 	int		n_collects;
 	int		n_rows;
 	int		n_collums;
-	t_bool	is_rectangle;
-	t_bool	is_wall;
+	t_bool	wrong_shape;
+	t_bool	wall_incomplete;
 	t_bool	has_wrong_char;
 }				t_layout;
 
@@ -91,14 +91,16 @@ typedef struct s_collect {
 // game variables
 typedef struct s_game {
 	mlx_t		*mlx;
-	t_sprites	*sprites;
+	int			map_width;
+	int			map_height;
+	t_sprites	sprites;
 	char		**map;
-	t_layout	*layout;
 	int			collected;
+	int			total_collects;
 	int			door_open;
 	int			move_count;
 	t_collect	*collectables;
-	t_player	*player;
+	t_player	player;
 	t_playerpos	playerpos;
 	mlx_image_t	*img_player;
 	mlx_image_t	*img_background;
@@ -120,7 +122,7 @@ void		map_error(char *str, char **map);
 void		check_layout_error(char **map, t_layout *layout);
 
 // game
-int			start_game(char **map, t_layout *layout, t_game *game);
+int			start_game(char **map, t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		tick(void *param);
 
@@ -128,7 +130,7 @@ void		set_playerlocation(t_player *player);
 int			create_player_image(void *mlx, t_player *player, int x, int y);
 
 int			show_map(char **map, t_game *game);
-int			*get_sprites(t_game *game);
+int			*get_sprites(t_sprites *sprites, t_player *player);
 mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture, int x, int y);
 
 // colelctables

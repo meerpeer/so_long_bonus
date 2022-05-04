@@ -6,11 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/24 12:42:49 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 14:00:28 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 16:25:32 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	get_nr_chars(char *str, char c)
 {
@@ -31,14 +31,11 @@ int	get_nr_chars(char *str, char c)
 char	*append_str(char *base, char *line)
 {
 	char	*new_str;
-	char	*new_str2;
 
 	if (base)
 	{
-		new_str2 = ft_strdup(base);
-		new_str = ft_strjoin(new_str2, line);
+		new_str = ft_strjoin(base, line);
 		free(base);
-		free(new_str2);
 	}
 	else
 		new_str = ft_strdup(line);

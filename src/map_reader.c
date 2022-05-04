@@ -6,11 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 14:02:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 11:54:13 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 16:23:19 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 char	**read_file_to_2darray(char *argv[])
 {
@@ -32,10 +32,10 @@ char	**read_file_to_2darray(char *argv[])
 			break ;
 		all_lines = append_str(all_lines, line_read);
 	}
+	close (fd);
 	map = ft_split(all_lines, '\n');
 	if (all_lines)
 		free(all_lines);
-	close (fd);
 	return (map);
 }
 

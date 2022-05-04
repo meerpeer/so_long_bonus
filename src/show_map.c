@@ -6,11 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 11:37:46 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 16:26:14 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 16:06:02 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture, int x, int y)
 {
@@ -34,10 +34,10 @@ mlx_image_t	*create_background_image(void *mlx, int width, int height)
 
 int	draw_background_tile(t_game *game, int x, int y)
 {
-	mlx_draw_texture(game->img_background, game->sprites->floor,
+	mlx_draw_texture(game->img_background, game->sprites.floor,
 		x * SIZE, y * SIZE);
 	if (game->map[y][x] == '1')
-		mlx_draw_texture(game->img_background, game->sprites->wall,
+		mlx_draw_texture(game->img_background, game->sprites.wall,
 			x * SIZE, y * SIZE);
 	return (0);
 }
@@ -48,7 +48,7 @@ int	show_map(char **map, t_game *game)
 	int	y;
 
 	game->img_background = create_background_image(game->mlx,
-			game->layout->n_collums, game->layout->n_rows);
+			game->map_width, game->map_height);
 	y = 0;
 	while (map[y])
 	{
@@ -56,17 +56,18 @@ int	show_map(char **map, t_game *game)
 		while (map[y][x])
 		{
 			draw_background_tile(game, x, y);
+			ft_printf("after first draw\n");
 			if (map[y][x] == 'C')
 				create_collectable(game, x, y);
 			if (map[y][x] == 'E')
 				game->img_exit = create_img_at_pos(game->mlx,
-					game->sprites->exit_close, x, y);
+					game->sprites.exit_close, x, y);
 			if (map[y][x] == 'P')
-				create_player_image(game->mlx, game->player, x, y);
+				create_player_image(game->mlx, &game->player, x, y);
 			x++;
 		}
 		y++;
 	}
-	set_playerlocation(game->player);
+	set_playerlocation(&game->player);
 	return (0);
 }
