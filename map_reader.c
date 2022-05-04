@@ -6,12 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 14:02:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 14:19:08 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 11:54:13 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 char	**read_file_to_2darray(char *argv[])
 {
@@ -46,6 +45,5 @@ char	**get_map(int argc, char *argv[])
 
 	check_input_file_error(argc, argv);
 	map = read_file_to_2darray(argv);
-	
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/04/24 16:44:23 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/04 11:32:21 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@
 # include "MLX42/include/MLX42/MLX42.h"
 
 // Size of tiles
-# define SIZE 16 
-
-//# define S_SIZE 16
-
-// Define tileset
-//# define FLOORTILE =
+# define SIZE 16
 
 // Keyscodes for events
 # define KEY_W 87
@@ -95,12 +90,13 @@ typedef struct s_collect {
 
 // game variables
 typedef struct s_game {
-	void		*mlx;
+	mlx_t		*mlx;
 	t_sprites	*sprites;
 	char		**map;
 	t_layout	*layout;
 	int			collected;
 	int			door_open;
+	int			move_count;
 	t_collect	*collectables;
 	t_player	*player;
 	t_playerpos	playerpos;
@@ -139,6 +135,9 @@ mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture, int x, int y);
 int			create_collectable(t_game *game, int x, int y);
 void		lstcollect_addback(t_collect **lst, t_collect *new);
 t_collect	*new_lstcollect(mlx_image_t *img, int x, int y);
+
+// moves
+void		count_move(int *move_count);
 
 // game state
 void		update_gamestate(t_game *game);
