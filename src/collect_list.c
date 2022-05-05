@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 16:56:53 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 13:57:51 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/05 15:05:34 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_collect	*new_lstcollect(mlx_image_t *img, int x, int y)
 	new_collect = malloc (sizeof(struct s_collect));
 	if (!new_collect)
 		return (NULL);
-	printf("malloc worked\n");
 	new_collect->x = x;
 	new_collect->y = y;
 	new_collect->img_collect = img;
@@ -31,16 +30,13 @@ void	lstcollect_addback(t_collect **lst, t_collect *new)
 {
 	t_collect	*last;
 
-	printf("yep\n");
 	last = *lst;
 	if (*lst)
 	{
-		printf("lst exists somehow\n");
 		while (last->next)
 			last = last->next;
 		last->next = new;
 	}
 	else
 		*lst = new;
-	printf("should be added\n");
 }

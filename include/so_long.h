@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 16:04:26 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/05 12:16:18 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ typedef enum e_bool
 	FALSE = 0,
 	TRUE = 1
 }			t_bool;
+
+// map allocation struct
+typedef struct s_map {
+	int		size;
+	int		capacity;
+	char	**map;
+}			t_map;
 
 // layout values
 typedef struct s_layout {
