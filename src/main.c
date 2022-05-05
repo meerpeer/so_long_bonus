@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/02 13:29:17 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 16:17:52 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/05 12:01:41 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	t_layout	*layout;
 	t_game		*game;
 
-	mlx_stretch_imgs = false;
+	mlx_stretch_imgs = true;
 	map = NULL;
 	map = get_map(argc, argv);
 	layout = get_layout(map);

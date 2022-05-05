@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 11:37:46 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 16:06:02 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/05 12:05:54 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ int	show_map(char **map, t_game *game)
 		while (map[y][x])
 		{
 			draw_background_tile(game, x, y);
-			ft_printf("after first draw\n");
 			if (map[y][x] == 'C')
 				create_collectable(game, x, y);
 			if (map[y][x] == 'E')
 				game->img_exit = create_img_at_pos(game->mlx,
-					game->sprites.exit_close, x, y);
+						game->sprites.exit_close, x, y);
 			if (map[y][x] == 'P')
 				create_player_image(game->mlx, &game->player, x, y);
 			x++;
