@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 11:37:46 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/05 12:05:54 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 13:51:38 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,5 @@ int	show_map(char **map, t_game *game)
 		}
 		y++;
 	}
-	set_playerlocation(&game->player);
 	return (0);
 }

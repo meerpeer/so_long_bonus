@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 14:02:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/05 15:11:05 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 09:41:14 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	**reaclocate_to_map(t_map *map)
 		free(map->map[i]);
 		i++;
 	}
+	free(map->map);
 	free(map);
 	return (new_map);
 }

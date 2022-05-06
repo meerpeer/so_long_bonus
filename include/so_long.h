@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/05 12:16:18 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 13:55:38 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct s_game {
 	mlx_image_t	*img_player;
 	mlx_image_t	*img_background;
 	mlx_image_t	*img_exit;
+	mlx_image_t	*img_move_count;
 	int			test;
 }				t_game;
 
@@ -133,7 +134,7 @@ int			start_game(char **map, t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		tick(void *param);
 
-void		set_playerlocation(t_player *player);
+void		set_playerlocation(t_playerpos *position, mlx_instance_t *instance);
 int			create_player_image(void *mlx, t_player *player, int x, int y);
 
 int			show_map(char **map, t_game *game);
@@ -146,7 +147,7 @@ void		lstcollect_addback(t_collect **lst, t_collect *new);
 t_collect	*new_lstcollect(mlx_image_t *img, int x, int y);
 
 // moves
-void		count_move(int *move_count);
+void		count_move(int *move_count, mlx_image_t **img_count, mlx_t *mlx);
 
 // game state
 void		update_gamestate(t_game *game);

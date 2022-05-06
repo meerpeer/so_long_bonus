@@ -6,16 +6,16 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:13:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 16:05:32 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 11:07:51 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	set_playerlocation(t_player *player)
+void	set_playerlocation(t_playerpos *position, mlx_instance_t *instance)
 {
-	player->position.x = player->image->instances[0].x / SIZE;
-	player->position.y = player->image->instances[0].y / SIZE;
+	position->x = instance->x / SIZE;
+	position->y = instance->y / SIZE;
 }
 
 int	create_player_image(void *mlx, t_player *player, int x, int y)
@@ -25,7 +25,7 @@ int	create_player_image(void *mlx, t_player *player, int x, int y)
 	player->image->instances[0].y = SIZE * y;
 	player->image->instances[0].x = SIZE * x;
 	player->image->instances[0].z = 2;
-	set_playerlocation(player);
+	set_playerlocation(&player->position, &player->image->instances[0]);
 	return (0);
 }
 
@@ -39,7 +39,7 @@ int	move_player(t_player *player, t_direction direction)
 		player->image->instances[0].y += SIZE;
 	if (direction == EAST)
 		player->image->instances[0].x += SIZE;
-	set_playerlocation(player);
+	set_playerlocation(&player->position, &player->image->instances[0]);
 	return (0);
 }
 

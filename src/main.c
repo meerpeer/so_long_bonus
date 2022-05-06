@@ -6,12 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/02 13:29:17 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/05 15:08:35 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 09:41:41 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
 
 int	main(int argc, char **argv)
 {
@@ -32,6 +31,5 @@ int	main(int argc, char **argv)
 		game->total_collects = layout->n_collects;
 		start_game(map, game);
 	}
-	system("leaks /so_long");
 	return (0);
 }
