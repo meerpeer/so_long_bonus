@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 14:02:07 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 16:40:21 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ typedef enum e_bool
 	TRUE = 1
 }			t_bool;
 
-typedef struct s_xyvector
+typedef struct s_2dVector
 {
 	int	x;
 	int	y;
-}			t_xyvector;
+}			t_2dVector;
 
 // map allocation struct
 typedef struct s_map {
@@ -142,13 +142,13 @@ void		tick(void *param);
 
 void		set_playerlocation(t_playerpos *position, mlx_instance_t *instance);
 int			create_player_image(void *mlx, t_player *player, int x, int y);
-
 int			show_map(char **map, t_game *game);
 int			*get_sprites(t_sprites *sprites, t_player *player);
 mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture, int x, int y);
 
 // colelctables
-int			create_collectable(t_game *game, int x, int y);
+int			create_collectable(mlx_t *mlx, t_collect **collect_start,
+				t_2dVector location, mlx_texture_t *texture);
 void		lstcollect_addback(t_collect **lst, t_collect *new);
 t_collect	*new_lstcollect(mlx_image_t *img, int x, int y);
 
@@ -157,7 +157,7 @@ void		count_move(int *move_count, mlx_image_t **img_count, mlx_t *mlx);
 
 // game state
 void		update_gamestate(t_game *game);
-int			try_collect(t_game *game);
+void		try_collect(t_game *game);
 void		try_open_exit(t_game *game);
 void		try_win(t_game *game);
 void		end_game(void);

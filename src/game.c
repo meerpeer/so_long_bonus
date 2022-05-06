@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:05:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 13:19:42 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 16:32:47 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	start_game(char **map, t_game *game)
 	game->map = map;
 	game->test = 1;
 	mlx_key_hook(game->mlx, &key_hook, game);
-	show_map(game->map, game);
+	show_map(game->map, game, game->mlx, game->sprites);
 	game->img_move_count = mlx_put_string(game->mlx, "0", 0, 0);
 	mlx_loop(game->mlx);
 	return (0);

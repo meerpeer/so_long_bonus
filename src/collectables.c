@@ -6,23 +6,24 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 14:19:39 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 16:06:22 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 16:40:31 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	create_collectable(t_game *game, int x, int y)
+int	create_collectable(mlx_t *mlx, t_collect **collect_start,
+	t_2dVector location, mlx_texture_t *texture)
 {
 	mlx_image_t	*new_collect_img;
 
-	new_collect_img = mlx_new_image(game->mlx, SIZE, SIZE);
+	new_collect_img = mlx_new_image(mlx, SIZE, SIZE);
 	mlx_draw_texture(new_collect_img,
-		game->sprites.collect, 0, 0);
-	mlx_image_to_window(game->mlx, new_collect_img,
-		SIZE * x, SIZE * y);
-	lstcollect_addback(&game->collectables,
-		new_lstcollect(new_collect_img, x, y));
+		texture, 0, 0);
+	mlx_image_to_window(mlx, new_collect_img,
+		SIZE * location.x, SIZE * location.y);
+	lstcollect_addback(collect_start,
+		new_lstcollect(new_collect_img, location.x, location.y));
 	printf("added to list\n");
 	return (0);
 }
@@ -42,15 +43,13 @@ int	hide_collectable(t_game *game, int x, int y)
 	return (0);
 }
 
-int	collect(t_game *game, int x, int y)
+void	collect(t_game *game, int x, int y)
 {
 	game->collected += 1;
 	hide_collectable(game, x, y);
-	printf("collected a key\n");
-	return (0);
 }
 
-int	try_collect(t_game *game)
+void	try_collect(t_game *game)
 {
 	int	x;
 	int	y;
@@ -59,5 +58,4 @@ int	try_collect(t_game *game)
 	y = game->player.position.y;
 	if (game->map[y][x] == 'C')
 		collect(game, x, y);
-	return (0);
 }
