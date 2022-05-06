@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 13:55:38 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 14:02:07 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ typedef enum e_bool
 	TRUE = 1
 }			t_bool;
 
+typedef struct s_xyvector
+{
+	int	x;
+	int	y;
+}			t_xyvector;
+
 // map allocation struct
 typedef struct s_map {
 	int		size;
@@ -62,19 +68,19 @@ typedef struct s_layout {
 	t_bool	wrong_shape;
 	t_bool	wall_incomplete;
 	t_bool	has_wrong_char;
-}				t_layout;
+}			t_layout;
 
 // player
 typedef struct s_playerpos {
 	int	x;
 	int	y;
-}				t_playerpos;
+}			t_playerpos;
 
 typedef struct s_player {
 	t_playerpos		position;
 	mlx_image_t		*image;
 	mlx_texture_t	*sprite_idle;
-}				t_player;
+}			t_player;
 
 // sprites
 typedef struct s_sprites {
@@ -85,7 +91,7 @@ typedef struct s_sprites {
 	mlx_texture_t	*collect;
 	mlx_texture_t	*exit_close;
 	mlx_texture_t	*exit_open;
-}				t_sprites;
+}			t_sprites;
 
 // collectable variables
 typedef struct s_collect {
@@ -93,7 +99,7 @@ typedef struct s_collect {
 	int			y;
 	mlx_image_t	*img_collect;
 	void		*next;
-}				t_collect;
+}			t_collect;
 
 // game variables
 typedef struct s_game {
@@ -114,7 +120,7 @@ typedef struct s_game {
 	mlx_image_t	*img_exit;
 	mlx_image_t	*img_move_count;
 	int			test;
-}				t_game;
+}			t_game;
 
 // MAP READER FUNCTIONS
 char		**read_file_to_2darray(char *argv[]);
