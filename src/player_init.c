@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exit.c                                             :+:    :+:            */
+/*   player_init.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/20 14:33:26 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 17:39:26 by mevan-de      ########   odam.nl         */
+/*   Created: 2022/05/06 17:09:02 by mevan-de      #+#    #+#                 */
+/*   Updated: 2022/05/06 17:38:50 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	open_exit(t_game *game)
+void	put_player_at_start(t_player *player, int x, int y)
 {
-	mlx_draw_texture(game->img_exit, game->sprites.exit_open, 0, 0);
-	game->door_open = 1;
+	player->image->instances[0].y = SIZE * y;
+	player->image->instances[0].x = SIZE * x;
+	player->image->instances[0].z = 2;
+	set_playerlocation(&player->position, &player->image->instances[0]);
 }
 
-void	try_open_exit(t_game *game)
+void	spawn_player(mlx_t *mlx, char **map, t_player *player)
 {
-	if (game->collected == game->total_collects)
-		open_exit(game);
-}
-
-void	try_win(t_game *game)
-{
-	int	x;
-	int	y;
-
-	x = game->player.position.x;
-	y = game->player.position.y;
-	if (game->door_open && game->map[y][x] == 'E')
-		end_game();
-}
-
-void	spawn_exit(mlx_t *mlx, char **map, mlx_image_t **img_exit,
-	mlx_texture_t *texture)
-{
-	t_2dVector	location;
+	t_2dVector location; 
 
 	location.y = 0;
 	while (map[location.y])
@@ -46,9 +30,11 @@ void	spawn_exit(mlx_t *mlx, char **map, mlx_image_t **img_exit,
 		location.x = 0;
 		while (map[location.y][location.x])
 		{
-			if (map[location.y][location.x] == 'E')
+			if (map[location.y][location.x] == 'P')
 			{
-				*img_exit = create_img_at_pos(mlx, texture, location);
+				player->image = create_img_at_pos(mlx, player->sprite_idle,
+						location);
+				put_player_at_start(player, location.x, location.y);
 				return ;
 			}
 			location.x++;

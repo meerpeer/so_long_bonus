@@ -9,7 +9,7 @@ HEADERFILES = include/so_long.h MLX42/include/MLX42/MLX42.h\
 
 SRC_FILES = main.c \
 	map_reader.c map_reader_utils.c map_reader_layout.c map_error.c\
-	game.c player.c show_map.c sprites.c\
+	game.c player.c player_init.c show_map.c sprites.c\
 	moves.c\
 	collectables.c collect_list.c exit.c \
 

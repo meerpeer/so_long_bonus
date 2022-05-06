@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 14:19:39 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 16:40:31 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 17:34:33 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,23 @@ void	try_collect(t_game *game)
 	y = game->player.position.y;
 	if (game->map[y][x] == 'C')
 		collect(game, x, y);
+}
+
+void	spawn_collectables(mlx_t *mlx, char **map, t_collect **collectables,
+	mlx_texture_t *texture)
+{
+	t_2dVector	location;
+
+	location.y = 0;
+	while (map[location.y])
+	{
+		location.x = 0;
+		while (map[location.y][location.x])
+		{
+			if (map[location.y][location.x] == 'C')
+				create_collectable(mlx, collectables, location, texture);
+			location.x++;
+		}
+		location.y++;
+	}
 }

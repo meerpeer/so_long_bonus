@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 16:40:21 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 17:37:34 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,13 +144,29 @@ void		set_playerlocation(t_playerpos *position, mlx_instance_t *instance);
 int			create_player_image(void *mlx, t_player *player, int x, int y);
 int			show_map(char **map, t_game *game);
 int			*get_sprites(t_sprites *sprites, t_player *player);
-mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture, int x, int y);
+mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture,
+				t_2dVector location);
 
-// colelctables
+// player
+void		spawn_player(mlx_t *mlx, char **map, t_player *player);
+
+// background
+mlx_image_t	*create_background_image(void *mlx, int width, int height);
+void		draw_background(char **map, t_sprites sprites,
+				mlx_image_t *img_background);
+
+// collectables
+void		spawn_collectables(mlx_t *mlx, char **map, t_collect **collectables,
+				mlx_texture_t *texture);
 int			create_collectable(mlx_t *mlx, t_collect **collect_start,
 				t_2dVector location, mlx_texture_t *texture);
 void		lstcollect_addback(t_collect **lst, t_collect *new);
 t_collect	*new_lstcollect(mlx_image_t *img, int x, int y);
+
+// exit
+void		spawn_exit(mlx_t *mlx, char **map, mlx_image_t **img_exit,
+				mlx_texture_t *texture);
+void		try_open_exit(t_game *game);
 
 // moves
 void		count_move(int *move_count, mlx_image_t **img_count, mlx_t *mlx);
@@ -158,7 +174,6 @@ void		count_move(int *move_count, mlx_image_t **img_count, mlx_t *mlx);
 // game state
 void		update_gamestate(t_game *game);
 void		try_collect(t_game *game);
-void		try_open_exit(t_game *game);
 void		try_win(t_game *game);
 void		end_game(void);
 
