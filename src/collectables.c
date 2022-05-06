@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 14:19:39 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 17:34:33 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 17:55:56 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	create_collectable(mlx_t *mlx, t_collect **collect_start,
 		SIZE * location.x, SIZE * location.y);
 	lstcollect_addback(collect_start,
 		new_lstcollect(new_collect_img, location.x, location.y));
-	printf("added to list\n");
 	return (0);
 }
 
@@ -65,16 +64,11 @@ void	spawn_collectables(mlx_t *mlx, char **map, t_collect **collectables,
 {
 	t_2dVector	location;
 
-	location.y = 0;
-	while (map[location.y])
+	location = get_next_tiletype_location(map, 'C', 0, 0);
+	while (location.y >= 0)
 	{
-		location.x = 0;
-		while (map[location.y][location.x])
-		{
-			if (map[location.y][location.x] == 'C')
-				create_collectable(mlx, collectables, location, texture);
-			location.x++;
-		}
-		location.y++;
+		create_collectable(mlx, collectables, location, texture);
+		location = get_next_tiletype_location(map, 'C', location.y + 1,
+			location.x + 1);
 	}
 }

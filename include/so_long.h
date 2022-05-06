@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 17:37:34 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 17:51:01 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,5 +176,9 @@ void		update_gamestate(t_game *game);
 void		try_collect(t_game *game);
 void		try_win(t_game *game);
 void		end_game(void);
+
+//utils
+t_2dVector	get_next_tiletype_location(char **map, char type, int starty,
+				int startx);
 
 #endif

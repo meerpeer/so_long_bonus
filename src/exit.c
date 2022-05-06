@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/20 14:33:26 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 17:39:26 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/06 17:56:51 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,7 @@ void	spawn_exit(mlx_t *mlx, char **map, mlx_image_t **img_exit,
 {
 	t_2dVector	location;
 
-	location.y = 0;
-	while (map[location.y])
-	{
-		location.x = 0;
-		while (map[location.y][location.x])
-		{
-			if (map[location.y][location.x] == 'E')
-			{
-				*img_exit = create_img_at_pos(mlx, texture, location);
-				return ;
-			}
-			location.x++;
-		}
-		location.y++;
-	}
+	location = get_next_tiletype_location(map, 'E', 0, 0);
+	*img_exit = create_img_at_pos(mlx, texture, location);
+	return ;
 }
