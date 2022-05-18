@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/24 12:42:49 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 16:25:32 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/18 15:49:41 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,6 @@ int	get_nr_chars(char *str, char c)
 		i--;
 	}
 	return (nr);
-}
-
-char	*append_str(char *base, char *line)
-{
-	char	*new_str;
-
-	if (base)
-	{
-		new_str = ft_strjoin(base, line);
-		free(base);
-	}
-	else
-		new_str = ft_strdup(line);
-	free(line);
-	return (new_str);
 }
 
 int	ft_strrncmp(const char *s1, const char *s2, size_t n)

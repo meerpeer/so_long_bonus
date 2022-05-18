@@ -40,6 +40,12 @@ clean:
 
 play: all
 	./$(NAME) "map_files/map_0.ber"
+	@#./$(NAME) "map_files/map_1.ber"
+	@#./$(NAME) "map_files/map_2.ber"
+	@#./$(NAME) "map_files/map_42.ber"
+	@#./$(NAME) "map_files/big.ber"
+	@#./$(NAME) "map_files/invalid.ber"
+	@#./$(NAME) "map_files/min.ber"
 
 fclean: clean
 	rm -f $(NAME)

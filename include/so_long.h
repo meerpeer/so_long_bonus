@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/18 15:05:51 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/18 15:54:47 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ typedef struct s_game {
 char		**read_file_to_2darray(char *argv[]);
 char		**get_map(int argc, char *argv[]);
 	//	map reader helper functions
-char		*append_str(char *base, char *add);
 int			get_nr_chars(char *str, char c);
 	// map reader layout
 t_layout	*get_layout(char **map);
@@ -138,7 +137,6 @@ void		check_layout_error(t_layout *layout);
 // game
 int			start_game(char **map, t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
-void		tick(void *param);
 int			*get_sprites(t_sprites *sprites, t_player *player);
 mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture,
 				t_2dVector location);
@@ -147,7 +145,6 @@ mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture,
 void		spawn_player(mlx_t *mlx, char **map, t_player *player);
 void		set_playerlocation(t_playerpos *position, mlx_instance_t *instance);
 int			create_player_image(void *mlx, t_player *player, int x, int y);
-int			show_map(char **map, t_game *game);
 
 // background
 mlx_image_t	*create_background_image(void *mlx, int width, int height);
@@ -157,8 +154,6 @@ void		draw_background(char **map, t_sprites sprites,
 // collectables
 void		spawn_collectables(mlx_t *mlx, char **map, t_collect **collectables,
 				mlx_texture_t *texture);
-int			create_collectable(mlx_t *mlx, t_collect **collect_start,
-				t_2dVector location, mlx_texture_t *texture);
 void		lstcollect_addback(t_collect **lst, t_collect *new);
 t_collect	*new_lstcollect(mlx_image_t *img, int x, int y);
 
