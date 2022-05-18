@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 17:51:01 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/18 15:05:51 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,23 +132,22 @@ int			get_nr_chars(char *str, char c);
 t_layout	*get_layout(char **map);
 	//	map reader errors
 void		check_input_file_error(int argc, char **argv);
-void		map_error(char *str, char **map);
-void		check_layout_error(char **map, t_layout *layout);
+void		map_error(char *str);
+void		check_layout_error(t_layout *layout);
 
 // game
 int			start_game(char **map, t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
 void		tick(void *param);
-
-void		set_playerlocation(t_playerpos *position, mlx_instance_t *instance);
-int			create_player_image(void *mlx, t_player *player, int x, int y);
-int			show_map(char **map, t_game *game);
 int			*get_sprites(t_sprites *sprites, t_player *player);
 mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture,
 				t_2dVector location);
 
 // player
 void		spawn_player(mlx_t *mlx, char **map, t_player *player);
+void		set_playerlocation(t_playerpos *position, mlx_instance_t *instance);
+int			create_player_image(void *mlx, t_player *player, int x, int y);
+int			show_map(char **map, t_game *game);
 
 // background
 mlx_image_t	*create_background_image(void *mlx, int width, int height);

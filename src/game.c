@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:05:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 17:42:46 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/18 15:21:32 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	init_all_in_order(char **map, t_game *game)
 
 void	update_gamestate(t_game *game)
 {
-	try_win(game);
 	try_collect(game);
 	try_open_exit(game);
 	count_move(&game->move_count, &game->img_move_count, game->mlx);
+	try_win(game);
 }
 
 int	start_game(char **map, t_game *game)

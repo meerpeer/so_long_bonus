@@ -1,4 +1,4 @@
-NAME = game
+NAME = so_long
 CFLAGS ?= -Wall -Wextra -Werror 
 #-fsanitize=address
 MLXFLAGS = -Lmlx -lmlx -Imlx -framework OpenGL -framework AppKit
@@ -26,9 +26,9 @@ MLX_DIR = MLX42/
 all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADERFILES)
-	make -C $(LIBFT_DIR)
-	make -C $(PRINTF_DIR)
-	make -C $(MLX_DIR)
+	@make -C $(LIBFT_DIR)
+	@make -C $(PRINTF_DIR)
+	@make -C $(MLX_DIR)
 	$(CC) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) $(MLX_LINK) -o $(NAME)
 
 obj/%.o: src/%.c 
@@ -43,9 +43,9 @@ play: all
 
 fclean: clean
 	rm -f $(NAME)
-	#make fclean $(LIBFT_DIR)
-	#make fclean $(PRINTF_DIR)
-	#make fclean -C MLX42
+	@make fclean -C $(LIBFT_DIR)
+	@make fclean -C$(PRINTF_DIR)
+	@make fclean -C MLX42
 
 
 re: fclean all

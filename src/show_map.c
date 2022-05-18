@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 11:37:46 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 17:39:09 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/18 12:53:25 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture,
 {
 	mlx_image_t	*image;
 
-	printf("showing exit\n");
 	image = mlx_new_image(mlx, SIZE, SIZE);
 	mlx_draw_texture(image, texture, 0, 0);
 	mlx_image_to_window(mlx, image, SIZE * location.x, SIZE * location.y);

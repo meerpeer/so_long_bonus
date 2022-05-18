@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 14:02:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 09:41:14 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/18 13:55:25 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	**reaclocate_to_map(t_map *map)
 			new_map[i] = ft_substr(map->map[i], 0, ft_strlen(map->map[i]) - 1);
 		else
 			new_map[i] = ft_strdup(map->map[i]);
-		//ft_printf("new_map[%i] = %s\n", i, new_map[i]);
 		free(map->map[i]);
 		i++;
 	}
@@ -75,7 +74,7 @@ char	**read_file_to_2darray(char *argv[])
 	line_read = NULL;
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		map_error("Could not open file", NULL);
+		map_error("Could not open file");
 	map = create_new_map();
 	while (1)
 	{

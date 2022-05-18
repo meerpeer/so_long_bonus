@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/02 13:29:17 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 09:41:41 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/18 13:57:39 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	map = NULL;
 	map = get_map(argc, argv);
 	layout = get_layout(map);
-	check_layout_error(map, layout);
+	check_layout_error(layout);
 	game = ft_calloc(1, sizeof (struct s_game));
 	if (game)
 	{

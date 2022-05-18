@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 14:19:39 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 17:55:56 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/18 15:04:33 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	spawn_collectables(mlx_t *mlx, char **map, t_collect **collectables,
 	while (location.y >= 0)
 	{
 		create_collectable(mlx, collectables, location, texture);
-		location = get_next_tiletype_location(map, 'C', location.y + 1,
-			location.x + 1);
+		location = get_next_tiletype_location(map, 'C', location.y,
+				location.x + 1);
 	}
 }
