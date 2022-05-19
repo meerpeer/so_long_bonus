@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/18 15:54:47 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 17:59:05 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef enum e_direction
 	WEST = 4,
 }			t_direction;
 
+typedef enum e_movepattern
+{
+	HORIZONTAL = 0,
+	VERTICAL = 1,
+}			t_movepattern;
+
 typedef enum e_bool
 {
 	FALSE = 0,
@@ -70,24 +76,25 @@ typedef struct s_layout {
 	t_bool	has_wrong_char;
 }			t_layout;
 
-// player
-typedef struct s_playerpos {
-	int	x;
-	int	y;
-}			t_playerpos;
-
-typedef struct s_player {
-	t_playerpos		position;
+// pawns
+typedef struct s_pawn {
+	t_2dVector		position;
 	mlx_image_t		*image;
-	mlx_texture_t	*sprite_idle;
-}			t_player;
+	t_direction		move_direction;
+	void			*next_pawn;
+}			t_pawn;
 
 // sprites
+typedef struct s_animdata {
+	mlx_texture_t	*idle;
+	mlx_texture_t	*move_left;
+	mlx_texture_t	*move_right;
+}			t_animdata;
+
 typedef struct s_sprites {
 	mlx_texture_t	*floor;
 	mlx_texture_t	*wall;
 	mlx_texture_t	*screen_img;
-	mlx_texture_t	*player;
 	mlx_texture_t	*collect;
 	mlx_texture_t	*exit_close;
 	mlx_texture_t	*exit_open;
@@ -113,9 +120,10 @@ typedef struct s_game {
 	int			door_open;
 	int			move_count;
 	t_collect	*collectables;
-	t_player	player;
-	t_playerpos	playerpos;
-	mlx_image_t	*img_player;
+	t_pawn		player;
+	t_pawn		*enemies;
+	t_animdata	player_animdata;
+	t_animdata	enemy_animdata;
 	mlx_image_t	*img_background;
 	mlx_image_t	*img_exit;
 	mlx_image_t	*img_move_count;
@@ -137,14 +145,20 @@ void		check_layout_error(t_layout *layout);
 // game
 int			start_game(char **map, t_game *game);
 void		key_hook(mlx_key_data_t keydata, void *param);
-int			*get_sprites(t_sprites *sprites, t_player *player);
+int			*get_sprites(t_sprites *sprites, t_animdata *player_data,
+				t_animdata *enemy_data);
 mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture,
 				t_2dVector location);
 
 // player
-void		spawn_player(mlx_t *mlx, char **map, t_player *player);
-void		set_playerlocation(t_playerpos *position, mlx_instance_t *instance);
-int			create_player_image(void *mlx, t_player *player, int x, int y);
+
+void		spawn_player(mlx_t *mlx, char **map, t_pawn *player,
+				t_animdata animdata);
+void		set_pawn_location(t_2dVector *position, mlx_instance_t *instance);
+int			create_player_image(void *mlx, t_pawn *player, int x, int y);
+void		put_pawn_at_start(t_pawn *pawn, int x, int y);
+t_bool		can_pawn_move(t_pawn *pawn, t_direction direction, char **map);
+int			move_pawn(t_pawn *pawn, t_direction direction);
 
 // background
 mlx_image_t	*create_background_image(void *mlx, int width, int height);
@@ -164,6 +178,12 @@ void		try_open_exit(t_game *game);
 
 // moves
 void		count_move(int *move_count, mlx_image_t **img_count, mlx_t *mlx);
+
+// enemies
+void		spawn_enemies(mlx_t *mlx, char **map, t_pawn **enemies,
+				t_animdata animdata);
+void		check_enemy_contact(t_pawn *enemies, t_2dVector playerpos);
+void		move_enemies(t_pawn **enemies, char **map);
 
 // game state
 void		update_gamestate(t_game *game);

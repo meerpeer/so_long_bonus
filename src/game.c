@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:05:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/18 15:21:32 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 18:06:53 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,20 @@ void	init_all_in_order(char **map, t_game *game)
 	spawn_collectables(game->mlx, map, &game->collectables,
 		game->sprites.collect);
 	spawn_exit(game->mlx, map, &game->img_exit, game->sprites.exit_close);
-	spawn_player(game->mlx, map, &game->player);
+	spawn_player(game->mlx, map, &game->player, game->enemy_animdata);
+	spawn_enemies(game->mlx, map, &game->enemies, game->enemy_animdata);
 }
 
 void	update_gamestate(t_game *game)
 {
 	try_collect(game);
+	check_enemy_contact(game->enemies, game->player.position);
 	try_open_exit(game);
 	count_move(&game->move_count, &game->img_move_count, game->mlx);
 	try_win(game);
+	if (game->move_count % 2 == 1)
+		move_enemies(&game->enemies, game->map);
+	check_enemy_contact(game->enemies, game->player.position);
 }
 
 int	start_game(char **map, t_game *game)
@@ -35,7 +40,7 @@ int	start_game(char **map, t_game *game)
 			(SIZE * game->map_height), "the name of the game", true);
 	if (!game->mlx)
 		return (0);
-	get_sprites(&game->sprites, &game->player);
+	get_sprites(&game->sprites, &game->player_animdata, &game->enemy_animdata);
 	game->map = map;
 	game->test = 1;
 	mlx_key_hook(game->mlx, &key_hook, game);

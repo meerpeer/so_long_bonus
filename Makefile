@@ -1,5 +1,5 @@
 NAME = so_long
-CFLAGS ?= -Wall -Wextra -Werror 
+CFLAGS ?= -Wall -Wextra #-Werror 
 #-fsanitize=address
 MLXFLAGS = -Lmlx -lmlx -Imlx -framework OpenGL -framework AppKit
 CC = gcc
@@ -9,8 +9,8 @@ HEADERFILES = include/so_long.h MLX42/include/MLX42/MLX42.h\
 
 SRC_FILES = main.c \
 	map_reader.c map_reader_utils.c map_reader_layout.c map_error.c\
-	game.c player.c player_init.c show_map.c sprites.c\
-	moves.c utils.c\
+	game.c player.c pawn_init.c show_map.c sprites.c\
+	moves.c utils.c enemy.c\
 	collectables.c collect_list.c exit.c \
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
@@ -39,11 +39,11 @@ clean:
 	rm -f $(OBJS)
 
 play: all
-	./$(NAME) "map_files/map_0.ber"
+	@#./$(NAME) "map_files/map_0.ber"
 	@#./$(NAME) "map_files/map_1.ber"
 	@#./$(NAME) "map_files/map_2.ber"
 	@#./$(NAME) "map_files/map_42.ber"
-	@#./$(NAME) "map_files/big.ber"
+	./$(NAME) "map_files/big.ber"
 	@#./$(NAME) "map_files/invalid.ber"
 	@#./$(NAME) "map_files/min.ber"
 

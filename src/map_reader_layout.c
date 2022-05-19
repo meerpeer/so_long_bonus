@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/24 13:44:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/04 15:31:02 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 15:16:53 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_line(char *line, t_layout *layout, t_bool is_outer)
 	layout->n_collects = layout->n_collects + get_nr_chars(line, 'C');
 	while (*line && line)
 	{
-		if (!ft_strchr("10PCE\n", *line))
+		if (!ft_strchr("10PCEV\n", *line))
 			layout->has_wrong_char = TRUE;
 		line++;
 	}
