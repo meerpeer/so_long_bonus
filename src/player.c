@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:13:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/19 13:20:48 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:23:05 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 
 	game = param;
 	direction = NONE;
-	if (keydata.action == MLX_PRESS)
+	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 	{
 		if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 			direction = NORTH;
