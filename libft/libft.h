@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:26:30 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/03/09 10:26:31 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:14:44 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	*ft_malloc(size_t size);
 
 #endif

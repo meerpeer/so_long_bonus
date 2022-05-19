@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:25:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/03/09 10:25:09 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:14:41 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	put_words(const char *s, char **split, char c, char wc)
 	{
 		str = get_next_word(str, c);
 		word_len = get_word_len(str, c);
-		split[n] = malloc(sizeof(char) * (word_len + 1));
+		split[n] = ft_malloc(sizeof(char) * (word_len + 1));
 		if (!split[n])
 			break ;
 		ft_strlcpy(split[n], (char *)str, (word_len + 1));
@@ -82,21 +82,21 @@ char	**ft_split(char const *s, char c)
 {
 	char	**result;
 	int		word_count;
-	int		n_malloc;
+	int		n_ft_malloc;
 
 	if (!s)
 		return (NULL);
 	word_count = get_word_count(s, c);
-	result = malloc(sizeof(char *) * (word_count + 1));
+	result = ft_malloc(sizeof(char *) * (word_count + 1));
 	if (!result)
 		return (NULL);
-	n_malloc = put_words(s, result, c, word_count);
-	if (n_malloc < word_count)
+	n_ft_malloc = put_words(s, result, c, word_count);
+	if (n_ft_malloc < word_count)
 	{
-		while (n_malloc)
+		while (n_ft_malloc)
 		{
-			n_malloc--;
-			free (result[n_malloc]);
+			n_ft_malloc--;
+			free (result[n_ft_malloc]);
 		}
 		free (result);
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 14:02:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/18 13:55:25 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:18:13 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ t_map	*create_new_map(void)
 {
 	t_map	*map;
 
-	map = malloc(sizeof(struct s_map));
+	map = ft_malloc(sizeof(struct s_map));
 	map->size = 4;
 	map->capacity = 4;
-	map->map = malloc(sizeof(char *) * map->size);
+	map->map = ft_malloc(sizeof(char *) * map->size);
 	return (map);
 }
 
@@ -54,7 +54,7 @@ char	**allocate_more_map_space(t_map *map)
 	map->capacity = map->size;
 	i = map->size - 1;
 	map->size *= 2;
-	new_map = malloc(sizeof(char *) * map->size);
+	new_map = ft_malloc(sizeof(char *) * map->size);
 	while (i >= 0)
 	{
 		new_map[i] = ft_strdup(map->map[i]);

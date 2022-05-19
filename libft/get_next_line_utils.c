@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:21:35 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/18 15:22:30 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:14:41 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_strndup_gnl(char *s1, int n)
 	char	*str;
 	int		i;
 
-	str = malloc(sizeof(char) * (n + 1));
+	str = ft_malloc(sizeof(char) * (n + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -69,7 +69,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 		return (NULL);
 	i = -1;
 	j = -1;
-	result = malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
+	result = ft_malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (!result)
 	{
 		free(s1);

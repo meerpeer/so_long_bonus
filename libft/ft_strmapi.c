@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:25:50 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/03/09 10:25:51 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:14:41 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	if (!s || !f)
 		return (NULL);
-	result = malloc (sizeof(char) * (ft_strlen(s) + 1));
+	result = ft_malloc (sizeof(char) * (ft_strlen(s) + 1));
 	if (!result)
 		return (NULL);
 	while (s[i])

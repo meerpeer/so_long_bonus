@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:46 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/03/23 15:04:21 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:07:18 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include "libft.h"
 
 # define BUFFER_SIZE 400
 

@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:21:01 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/03/16 18:38:57 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:14:41 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*get_line(char *backup)
 		return (NULL);
 	while (backup[i] && backup[i] != '\n')
 		i++;
-	line = malloc(sizeof(char) * (i + 2));
+	line = ft_malloc(sizeof(char) * (i + 2));
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -72,7 +72,7 @@ char	*get_newbackup(char *backup)
 		free(backup);
 		return (NULL);
 	}
-	new_backup = malloc(sizeof(char) * (ft_strlen_gnl(backup) - i + 1));
+	new_backup = ft_malloc(sizeof(char) * (ft_strlen_gnl(backup) - i + 1));
 	if (!new_backup)
 	{
 		free(backup);
@@ -92,7 +92,7 @@ char	*read_to_backup(int fd, char *backup)
 	char	*buffer;
 	int		read_bytes;
 
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = ft_malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	read_bytes = 1;

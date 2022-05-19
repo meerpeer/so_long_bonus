@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:23:26 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/03/09 10:23:27 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:14:41 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_itoa(int n)
 		return (ft_strdup("0"));
 	nr = n;
 	len = (get_len(nr));
-	str = malloc(sizeof(char) * (len + 1));
+	str = ft_malloc(sizeof(char) * (len + 1));
 	if (str)
 		str = convert_to_str(str, nr, len);
 	return (str);
