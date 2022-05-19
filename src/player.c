@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:13:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/06 17:16:32 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 13:20:48 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,5 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 			move_player(&game->player, direction);
 			update_gamestate(game);
 		}
-		if (keydata.key == MLX_KEY_Q)
-			mlx_draw_texture(game->img_exit, game->sprites.exit_open, 0, 0);
 	}
 }
