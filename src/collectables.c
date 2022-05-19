@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 14:19:39 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/18 15:04:33 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/19 14:47:36 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	create_collectable(mlx_t *mlx, t_collect **collect_start,
 	mlx_image_t	*new_collect_img;
 
 	new_collect_img = mlx_new_image(mlx, SIZE, SIZE);
+	if (!new_collect_img)
+		exit (0);
 	mlx_draw_texture(new_collect_img,
 		texture, 0, 0);
 	mlx_image_to_window(mlx, new_collect_img,
