@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/06 17:09:02 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/19 17:54:13 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 16:44:08 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,5 @@ void	spawn_enemies(mlx_t *mlx, char **map, t_pawn **enemies,
 			enemies[0]->move_direction = EAST;
 		last_enemy_location = get_next_tiletype_location(map, 'V',
 				last_enemy_location.y, last_enemy_location.x + 1);
-		ft_printf("searched for new location\n");
 	}
 }

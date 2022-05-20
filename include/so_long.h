@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 13:20:04 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 15:11:14 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_sprites {
 	mlx_texture_t	*collect;
 	mlx_texture_t	*exit_close;
 	mlx_texture_t	*exit_open;
+	mlx_texture_t	**collects;
 }			t_sprites;
 
 // collectable variables
@@ -128,7 +129,8 @@ typedef struct s_game {
 	mlx_image_t	*img_background;
 	mlx_image_t	*img_exit;
 	mlx_image_t	*img_move_count;
-	int			test;
+	double		update_key_time;
+	int			current_key_index;
 }			t_game;
 
 // MAP READER FUNCTIONS
@@ -172,6 +174,7 @@ void		spawn_collectables(mlx_t *mlx, char **map, t_collect **collectables,
 				mlx_texture_t *texture);
 void		lstcollect_addback(t_collect **lst, t_collect *new);
 t_collect	*new_lstcollect(mlx_image_t *img, int x, int y);
+void		update_key_anim_loop(void *param);
 
 // exit
 void		spawn_exit(mlx_t *mlx, char **map, mlx_image_t **img_exit,

@@ -1,6 +1,5 @@
 NAME = so_long
-CFLAGS ?= -Wall -Wextra #-Werror 
-#-fsanitize=address
+CFLAGS ?= -Wall -Wextra -Werror
 MLXFLAGS = -Lmlx -lmlx -Imlx -framework OpenGL -framework AppKit
 CC = gcc
 MLX_LINK = -I include -lglfw -L "/Users/mevan-de/.brew/opt/glfw/lib/"
@@ -11,7 +10,7 @@ SRC_FILES = main.c \
 	map_reader.c map_reader_utils.c map_reader_layout.c map_error.c\
 	game.c player.c pawn_init.c show_map.c sprites.c\
 	moves.c utils.c enemy.c\
-	collectables.c collect_list.c exit.c \
+	collectables.c collect_spawn.c exit.c \
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJS = $(addprefix obj/, $(OBJ_FILES))
@@ -39,13 +38,13 @@ clean:
 	rm -f $(OBJS)
 
 play: all
-	@#./$(NAME) "map_files/map_0.ber"
+	./$(NAME) "map_files/map_0.ber"
 	./$(NAME) "map_files/map_1.ber"
-	@#./$(NAME) "map_files/map_2.ber"
-	@#./$(NAME) "map_files/map_42.ber"
+	./$(NAME) "map_files/map_2.ber"
+	./$(NAME) "map_files/map_42.ber"
 	./$(NAME) "map_files/big.ber"
-	@#./$(NAME) "map_files/invalid.ber"
-	@#./$(NAME) "map_files/min.ber"
+	./$(NAME) "map_files/invalid.ber"
+	./$(NAME) "map_files/min.ber"
 
 fclean: clean
 	rm -f $(NAME)

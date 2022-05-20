@@ -6,13 +6,13 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 13:25:50 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 13:19:11 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 16:51:45 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	switch_direction(t_direction *direction, t_pawn *pawn)
+void	switch_direction(t_direction *direction)
 {
 	if (*direction == NORTH)
 		*direction = SOUTH;
@@ -27,7 +27,6 @@ void	switch_direction(t_direction *direction, t_pawn *pawn)
 void	move_enemies(t_pawn **enemies, char **map, t_animdata animdata)
 {
 	t_pawn	*enemy_to_move;
-	t_bool	move_possible;
 
 	enemy_to_move = *enemies;
 	while (enemy_to_move)
@@ -36,7 +35,7 @@ void	move_enemies(t_pawn **enemies, char **map, t_animdata animdata)
 				map))
 			move_pawn(enemy_to_move, enemy_to_move->move_direction);
 		else
-			switch_direction(&enemy_to_move->move_direction, enemy_to_move);
+			switch_direction(&enemy_to_move->move_direction);
 		update_anim(animdata, *enemy_to_move);
 		enemy_to_move = enemy_to_move->next_pawn;
 	}
@@ -52,13 +51,8 @@ void	check_enemy_contact(t_pawn *enemies, t_2dVector playerpos)
 	{
 		enemypos = enemy_to_check->position;
 		if (enemypos.x == playerpos.x && enemypos.y == playerpos.y)
-		{
-		//	system("leaks so_long");
 			exit(0);
-		}
 		enemy_to_check = enemy_to_check->next_pawn;
 	}
 	return ;
 }
-
-

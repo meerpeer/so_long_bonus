@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 14:02:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 14:10:32 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 16:47:40 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	**read_file_to_2darray(char *argv[])
 
 	line_read = NULL;
 	fd = open(argv[1], O_RDONLY);
-	if (fd <= 0) // check if fd can be 0
+	if (fd <= 0)
 		map_error("Could not open file");
 	map = create_new_map();
 	while (1)
