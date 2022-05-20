@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 11:47:34 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 17:02:36 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 17:32:06 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_sprite_allocation(t_sprites *sprites, t_animdata *player_data,
 int	*get_sprites(t_sprites *sprites, t_animdata *player_data,
 	t_animdata *enemy_data)
 {
-	sprites->floor = mlx_load_png("sprites/32floor.png");
+	sprites->floor = mlx_load_png("sprites/32floor2.png");
 	sprites->wall = mlx_load_png("sprites/32wall.png");
 	sprites->exit_close = mlx_load_png("sprites/32door_closed.png");
 	sprites->exit_open = mlx_load_png("sprites/32door_open.png");
