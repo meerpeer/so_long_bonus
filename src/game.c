@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:05:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 15:07:09 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 17:05:12 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	update_gamestate(t_game *game)
 void	init_all_in_order(char **map, t_game *game)
 {
 	draw_background(map, game->sprites, game->img_background);
-	spawn_collectables(game->mlx, map, &game->collectables,
-		game->sprites.collect);
+	spawn_collectables(game->mlx, map, &game->collectables);
 	spawn_exit(game->mlx, map, &game->img_exit, game->sprites.exit_close);
 	spawn_player(game->mlx, map, &game->player, game->player_animdata);
 	spawn_enemies(game->mlx, map, &game->enemies, game->enemy_animdata);

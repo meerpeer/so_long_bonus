@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:21:35 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/19 13:14:41 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 17:26:36 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 		return (NULL);
 	i = -1;
 	j = -1;
-	result = ft_malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
+	result = ft_malloc(sizeof(char)
+			* (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (!result)
 	{
 		free(s1);
