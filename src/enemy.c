@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 13:25:50 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/19 18:05:41 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 13:19:11 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,17 @@
 
 void	switch_direction(t_direction *direction, t_pawn *pawn)
 {
-	//update anim
-	ft_printf("direction = %i\n", *direction);
 	if (*direction == NORTH)
 		*direction = SOUTH;
 	else if (*direction == SOUTH)
-	{
-		ft_printf("direction north =%i\n", NORTH);
 		*direction = NORTH;
-	}
 	else if (*direction == EAST)
 		*direction = WEST;
 	else
 		*direction = EAST;
-	ft_printf("changed to = %i\n\n", *direction);
 }
 
-void	move_enemies(t_pawn **enemies, char **map)
+void	move_enemies(t_pawn **enemies, char **map, t_animdata animdata)
 {
 	t_pawn	*enemy_to_move;
 	t_bool	move_possible;
@@ -43,6 +37,7 @@ void	move_enemies(t_pawn **enemies, char **map)
 			move_pawn(enemy_to_move, enemy_to_move->move_direction);
 		else
 			switch_direction(&enemy_to_move->move_direction, enemy_to_move);
+		update_anim(animdata, *enemy_to_move);
 		enemy_to_move = enemy_to_move->next_pawn;
 	}
 }

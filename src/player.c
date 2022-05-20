@@ -74,6 +74,8 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		if (can_pawn_move(&game->player, direction, game->map) && direction)
 		{
 			move_pawn(&game->player, direction);
+			game->player.move_direction = direction;
+			update_anim(game->player_animdata, game->player);
 			update_gamestate(game);
 		}
 	}

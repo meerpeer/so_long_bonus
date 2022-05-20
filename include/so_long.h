@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:20:08 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/19 17:59:05 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 13:20:04 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 // Size of tiles
-# define SIZE 16
+// add something here as if you change the size it could crash
+# define SIZE 32
 
 // Keyscodes for events
 # define KEY_W 87
@@ -149,6 +150,7 @@ int			*get_sprites(t_sprites *sprites, t_animdata *player_data,
 				t_animdata *enemy_data);
 mlx_image_t	*create_img_at_pos(void *mlx, mlx_texture_t *texture,
 				t_2dVector location);
+void		update_anim(t_animdata animdata, t_pawn pawn);
 
 // player
 
@@ -183,7 +185,7 @@ void		count_move(int *move_count, mlx_image_t **img_count, mlx_t *mlx);
 void		spawn_enemies(mlx_t *mlx, char **map, t_pawn **enemies,
 				t_animdata animdata);
 void		check_enemy_contact(t_pawn *enemies, t_2dVector playerpos);
-void		move_enemies(t_pawn **enemies, char **map);
+void		move_enemies(t_pawn **enemies, char **map, t_animdata animdata);
 
 // game state
 void		update_gamestate(t_game *game);

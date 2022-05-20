@@ -6,21 +6,11 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:05:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/19 18:06:53 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/20 13:25:31 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	init_all_in_order(char **map, t_game *game)
-{
-	draw_background(map, game->sprites, game->img_background);
-	spawn_collectables(game->mlx, map, &game->collectables,
-		game->sprites.collect);
-	spawn_exit(game->mlx, map, &game->img_exit, game->sprites.exit_close);
-	spawn_player(game->mlx, map, &game->player, game->enemy_animdata);
-	spawn_enemies(game->mlx, map, &game->enemies, game->enemy_animdata);
-}
 
 void	update_gamestate(t_game *game)
 {
@@ -30,8 +20,18 @@ void	update_gamestate(t_game *game)
 	count_move(&game->move_count, &game->img_move_count, game->mlx);
 	try_win(game);
 	if (game->move_count % 2 == 1)
-		move_enemies(&game->enemies, game->map);
+		move_enemies(&game->enemies, game->map, game->enemy_animdata);
 	check_enemy_contact(game->enemies, game->player.position);
+}
+
+void	init_all_in_order(char **map, t_game *game)
+{
+	draw_background(map, game->sprites, game->img_background);
+	spawn_collectables(game->mlx, map, &game->collectables,
+		game->sprites.collect);
+	spawn_exit(game->mlx, map, &game->img_exit, game->sprites.exit_close);
+	spawn_player(game->mlx, map, &game->player, game->player_animdata);
+	spawn_enemies(game->mlx, map, &game->enemies, game->enemy_animdata);
 }
 
 int	start_game(char **map, t_game *game)

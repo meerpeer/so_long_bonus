@@ -40,7 +40,7 @@ clean:
 
 play: all
 	@#./$(NAME) "map_files/map_0.ber"
-	@#./$(NAME) "map_files/map_1.ber"
+	./$(NAME) "map_files/map_1.ber"
 	@#./$(NAME) "map_files/map_2.ber"
 	@#./$(NAME) "map_files/map_42.ber"
 	./$(NAME) "map_files/big.ber"
