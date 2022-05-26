@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/10 15:14:12 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/18 14:36:00 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/26 12:32:41 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	map_error(char *str)
 void	check_input_file_error(int argc, char **argv)
 {
 	if (argc != 2)
-		map_error("Incorrect number off files presented");
+		map_error("Incorrect number off arguments");
 	if (!ft_strrncmp (argv[1], ".ber", 4))
 		map_error("Incorrect file type");
 }
@@ -41,8 +41,6 @@ void	check_layout_error(t_layout *layout)
 		map_error("Not enough collectibles");
 	if (layout->n_exits == 0)
 		map_error("No exit detected");
-	if (layout->n_exits > 1)
-		map_error("Too many exits detected");
 	if (layout->n_exits > 1)
 		map_error("Too many exits detected");
 	if (layout->has_wrong_char)

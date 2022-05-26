@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/23 17:05:20 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 17:05:12 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/26 12:37:37 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_all_in_order(char **map, t_game *game)
 int	start_game(char **map, t_game *game)
 {
 	game->mlx = mlx_init((SIZE * game->map_width),
-			(SIZE * game->map_height), "the name of the game", true);
+			(SIZE * game->map_height), "Soooo Long", true);
 	if (!game->mlx)
 		return (0);
 	get_sprites(&game->sprites, &game->player_animdata, &game->enemy_animdata);
@@ -46,8 +46,8 @@ int	start_game(char **map, t_game *game)
 			game->map_width, game->map_height);
 	init_all_in_order(map, game);
 	game->img_move_count = mlx_put_string(game->mlx, "0", 0, 0);
-	mlx_loop_hook(game->mlx, &update_key_anim_loop, game);
-	mlx_loop(game->mlx);
+	if (mlx_loop_hook(game->mlx, &update_key_anim_loop, game))
+		mlx_loop(game->mlx);
 	return (0);
 }
 

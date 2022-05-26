@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 14:19:39 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 15:39:23 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/26 12:42:38 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	set_all_collect_textures(t_game *game, mlx_texture_t *texture)
 	curr_collect = game->collectables;
 	while (curr_collect)
 	{
-		mlx_draw_texture(curr_collect->img_collect, texture, 0, 0);
+		if (!(mlx_draw_texture(curr_collect->img_collect, texture, 0, 0)))
+			exit (0);
 		curr_collect = curr_collect->next;
 	}
 }

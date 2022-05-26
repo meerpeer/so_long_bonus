@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 16:56:53 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 17:05:33 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/26 12:38:45 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ t_collect	*new_lstcollect(mlx_image_t *img, int x, int y)
 	t_collect	*new_collect;
 
 	new_collect = ft_malloc (sizeof(struct s_collect));
-	if (!new_collect)
-		return (NULL);
 	new_collect->x = x;
 	new_collect->y = y;
 	new_collect->img_collect = img;

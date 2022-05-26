@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 14:02:45 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 16:47:40 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/26 12:22:54 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**reaclocate_to_map(t_map *map)
 	int		i;
 
 	new_map_size = map->size - map->capacity;
-	new_map = calloc(new_map_size + 1, sizeof(char *));
+	new_map = ft_calloc(new_map_size + 1, sizeof(char *));
 	i = 0;
 	while (i < new_map_size)
 	{

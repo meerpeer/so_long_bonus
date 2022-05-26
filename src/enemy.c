@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 13:25:50 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 16:51:45 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/26 12:44:45 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	switch_direction(t_direction *direction)
 		*direction = NORTH;
 	else if (*direction == EAST)
 		*direction = WEST;
-	else
+	else if (*direction == WEST)
 		*direction = EAST;
 }
 

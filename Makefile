@@ -38,6 +38,7 @@ clean:
 	rm -f $(OBJS)
 
 play: all
+	./$(NAME) "map_files/map_0_0.ber"
 	./$(NAME) "map_files/map_0.ber"
 	./$(NAME) "map_files/map_1.ber"
 	./$(NAME) "map_files/map_2.ber"
@@ -45,6 +46,9 @@ play: all
 	./$(NAME) "map_files/big.ber"
 	./$(NAME) "map_files/invalid.ber"
 	./$(NAME) "map_files/min.ber"
+
+norm:
+	norminette libft/ ft_printf/ include/ src/
 
 fclean: clean
 	rm -f $(NAME)

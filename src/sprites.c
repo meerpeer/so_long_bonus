@@ -6,7 +6,7 @@
 /*   By: mevan-de <mevan-de@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 11:47:34 by mevan-de      #+#    #+#                 */
-/*   Updated: 2022/05/20 17:32:06 by mevan-de      ########   odam.nl         */
+/*   Updated: 2022/05/26 12:53:00 by mevan-de      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	get_collect_sprites(t_sprites *sprites)
 {
-	int	i;
-
 	sprites->collects = ft_calloc(8, sizeof(mlx_texture_t));
 	sprites->collects[0] = mlx_load_png("sprites/keys/key1.png");
 	sprites->collects[1] = mlx_load_png("sprites/keys/key2.png");
@@ -25,11 +23,6 @@ void	get_collect_sprites(t_sprites *sprites)
 	sprites->collects[5] = mlx_load_png("sprites/keys/key6.png");
 	sprites->collects[6] = mlx_load_png("sprites/keys/key7.png");
 	sprites->collects[7] = mlx_load_png("sprites/keys/key8.png");
-	i = 0;
-	while (sprites->collects[i])
-		i++;
-	if (i < 8)
-		exit(0);
 }
 
 void	update_anim(t_animdata animdata, t_pawn pawn)
@@ -44,12 +37,15 @@ void	update_anim(t_animdata animdata, t_pawn pawn)
 void	check_sprite_allocation(t_sprites *sprites, t_animdata *player_data,
 	t_animdata *enemy_data)
 {
-	if (!sprites->floor
-		|| !sprites->wall
-		|| !player_data->idle
-		|| !sprites->exit_close
-		|| !sprites->exit_open
-		|| !enemy_data->idle)
+	int	i;
+
+	i = 0;
+	if (!sprites->floor || !sprites->wall || !player_data->idle
+		|| !sprites->exit_close || !sprites->exit_open || !enemy_data->idle)
+		exit(0);
+	while (sprites->collects[i])
+		i++;
+	if (i < 8)
 		exit(0);
 }
 
